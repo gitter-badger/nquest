@@ -1,0 +1,33 @@
+{
+  "name": "nquest",
+  "version": "0.0.1",
+  "description": "Node http request helper for get, post, put and delete",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/wangchi/nquest.git"
+  },
+  "keywords": [
+    "request",
+    "get",
+    "post",
+    "put",
+    "delete",
+    "node ajax",
+    "node request"
+  ],
+  "author": "WalkerBe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wangchi/nquest/issues"
+  },
+  "homepage": "https://github.com/wangchi/nquest#readme",
+  "dependencies": {
+    "querystring": "0.2.0"
+  },
+  "devDependencies": {
+  }
+}
