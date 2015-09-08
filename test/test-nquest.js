@@ -1,5 +1,8 @@
 var nquest = require('../index');
 
+console.log(nquest);
+console.log(nquest.get());
+
 var testConfig1 = {
   host: '127.0.0.1',
   port: '3000',
