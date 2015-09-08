@@ -3,7 +3,7 @@
 var http = require('http');
 var querystring = require('querystring');
 
-function nquest ( options, callback ) {
+function Nquest ( options, callback ) {
   var opts = merge({
     method  : 'GET',
     host    : 'localhost',
@@ -13,6 +13,10 @@ function nquest ( options, callback ) {
   }, options);
 
   requestCore( opts, callback, opts.data );
+}
+
+function nquest ( options, callback ) {
+  return new Nquest( options, callback );
 }
 
 function requestCore ( options, callback ) {
@@ -68,5 +72,29 @@ function merge ( defaults, options ) {
   }
   return defaults;
 }
+
+var nquestProto = nquest.prototype;
+
+
+nquest.get = function ( host, port, path, data, callback ) {
+  nquest({
+    host: host,
+    port: port,
+    path: path,
+    data: data
+  }, callback);
+};
+
+nquest.post = function ( host, port, path, data, callback ) {
+  nquest({
+    method: 'POST',
+    host: host,
+    port: port,
+    path: path,
+    data: data
+  }, callback);
+};
+
+
 
 module.exports = nquest;
