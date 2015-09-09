@@ -1,15 +1,33 @@
+/**
+ * nquest core
+ * @author  hiwangchi@gmail.com
+ * https://github.com/wangchi/nquest
+ * MIT
+ */
+
 'use strict';
 
-var http = require('http');
+var http        = require('http');
 var querystring = require('querystring');
+var url         = require('url');
+
 
 function Nquest ( options, callback ) {
+
+  var urlParse = url.parse(options.url);
+
+  merge(options, {
+    hostname : urlParse.hostname,
+    port     : urlParse.port,
+    path     : urlParse.path
+  });
+
   var opts = merge({
-    method  : 'GET',
-    host    : 'localhost',
-    port    : '80',
-    path    : '/',
-    data    : ''
+    method   : 'GET',
+    hostname : 'localhost',
+    port     : '80',
+    path     : '/',
+    data     : ''
   }, options);
 
   requestCore( opts, callback, opts.data );
@@ -27,7 +45,7 @@ function requestCore ( options, callback ) {
 
   if ( options.method === 'get' ) {
     merge(options, {
-      path: options.path + '?' + querystring.stringify(options.data),
+      path: url.parse(options.path).pathname + '?' + querystring.stringify(options.data),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -73,28 +91,20 @@ function merge ( defaults, options ) {
   return defaults;
 }
 
-var nquestProto = nquest.prototype;
-
-
-nquest.get = function ( host, port, path, data, callback ) {
+nquest.get = function ( url, data, callback ) {
   nquest({
-    host: host,
-    port: port,
-    path: path,
-    data: data
+    url  : url,
+    data : data
   }, callback);
 };
 
-nquest.post = function ( host, port, path, data, callback ) {
+nquest.post = function ( url, data, callback ) {
   nquest({
-    method: 'POST',
-    host: host,
-    port: port,
-    path: path,
-    data: data
+    method : 'POST',
+    url    : url,
+    data   : data
   }, callback);
 };
-
 
 
 module.exports = nquest;
