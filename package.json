@@ -1,6 +1,6 @@
 {
   "name": "nquest",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Node http request helper for get, post, put and delete",
   "main": "index.js",
   "scripts": {
