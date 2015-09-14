@@ -1,4 +1,6 @@
 # nquest
+
+[![Join the chat at https://gitter.im/wangchi/nquest](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/wangchi/nquest?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Node http request helper for get, post, put and so on.
 
 ## Methods
